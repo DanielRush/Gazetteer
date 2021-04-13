@@ -13,18 +13,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
    
-       
-    
     <link rel="stylesheet" href="css/style.css"/>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+ 	<script src="https://kit.fontawesome.com/7ec3e40f77.js" crossorigin="anonymous"></script>
 
     <style>
-
-        * {box-sizing: border-box}
+* {box-sizing: border-box}
 body {font-family: "Montserrat", sans-serif;}
 
 html, body {
@@ -32,19 +30,42 @@ margin:0;
 padding:0;
 }
 
-h3 {
+h1 {
   color: #444;
+  margin-left: 10px;
+  font-size: 20px;
+  padding: 10px 0px;
+}
+      
+/*h3 {
+  color: #444;
+  margin-left: 10px;
+ 
+}*/
+      
+.w3-container h3 {
+  margin-left: 0px;
 }
 
 p {
   color: #444;
 }
+      
+#map {
+  width:100%; 
+  height:100%; 
+  margin-top: 120px;
+  margin-left: 60px;
+  position:absolute; 
+  z-index: 0;
+ }
 
 .navbar {
   background-color: #009688;
-  min-width:200px;
-  width: 25%;
-  height: 200px;
+  min-width: 280px;
+  max-width: 480px;
+  /*width: 100%;*/
+  height: 120px;
   text-align: center;
   padding-top: 20px;
   position: fixed;
@@ -58,7 +79,7 @@ p {
 }
 
 .navbar select {
-  width: 300px;
+  width: 90%;
   float: center;
 }
 
@@ -67,8 +88,9 @@ p {
   float: left;
   background-color: #48B4AA; /*#07889b or #48A4A4*/
   width: 60px;
-  height: 300px;
-  margin-top: 200px;
+  /*height: 300px;*/
+  height: 100%;
+  margin-top: 120px;
   position: fixed;
   z-index: 4;
 }
@@ -101,17 +123,20 @@ p {
 /* Style the tab content */
 .tabcontent {
   float: left;
-  padding: 0px 0px;
-  width: 25%
-  min-width: 290px;
+  padding: 0px;
+  margin-top: 120px;
+  margin-left: 60px;
+  width: 100%;
   border-left: none;
   background-color: white;
   position: fixed;
-  margin-top: 200px;
-  margin-left: 60px;
-  min-height: 100%;
+  height: 100%;
   z-index: 4;
   
+}
+      
+.tabcontent.btn-group button:hover {
+  background-color: #F78104;
 }
 
 .fas {
@@ -121,10 +146,35 @@ color: white;
 .fab {
 color: white;
 }
+      
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
 
 tr {
   height: 70px;
+  margin-left: 10px;
 }
+
+.btn-group tr {
+  height: 60px;
+}
+      
+.btn-group {
+  width: 100%;
+  height: 100%;
+      }
+
+.btn-group tr:hover {
+  background-color: #fedcb9;
+      }
 
 .btn-group button {
   background-color: #91D2CC; /*#66b9bf or #91C8C8*/
@@ -134,17 +184,130 @@ tr {
   padding: 0px;
   cursor: pointer; 
   height: 70px;
-  width: 290px;
+  width: 100%;
   display: block; 
-  size: 24px;
+  font-size: 18px;
 
 }
 
 .btn-group button:hover {
   background-color: #F78104; /*#FAAB36 or #F78104*/
+} 
+      
+
+/*map {
+   padding-left: 60px;
+   padding-top: 100px;
+   height: 100%;
+   width: 100%;
+
+ } */
+
+
+
+/*@media screen and (min-width: 481px) and (max-width: 1024px) {
+//display select bar right of logo
+// mobile display select bar under logo as with desktop
+ 
+.tabcontent {
+  max-width: 290px;
+  margin-top: 200px;
+  margin-left: 60px;
+  min-height: 100%;
+}
+      
+#map {
+  width:100%; 
+  height:100%; 
+  margin-top: 120px;
+  margin-left: 60px;
+  position:absolute; 
+  z-index: 0;
+ }
+  */
+
+
+
+ @media screen and (min-width: 481px) {
+   
+#map {
+  width:100%; 
+  height:100%; 
+  margin-top: 0px;
+  margin-left: 350px; 
+  z-index: 0;
+  position: relative;
+ }
+
+.navbar {
+  width:350px;
+  height: 200px;
+ }
+
+.navbar img {
+  margin: 20px;
+  width: 300px;
+}
+
+.navbar select {
+  width: 300px;
+  float: center;
 }
 
 
+.tab {
+  width: 60px;
+  min-width: 140px;
+  height: 300px;
+  margin-top: 200px;
+  position: fixed;
+}
+
+
+.tab button {
+  padding: 22px 16px;
+  width: 60px;
+}
+
+
+.tabcontent {
+  width: 290px;
+  /*min-width: 290px;*/
+  margin-top: 200px;
+  margin-left: 60px;
+  min-height: 100%;
+}
+     
+.btn-group {
+  width: 25%;
+   }
+   
+.btn-group tr {
+  height: 50px;
+}
+      
+
+.btn-group button {
+  height: 70px;
+  width: 290px;
+}
+   
+ table {
+  border-collapse: collapse;
+  /*width: 290px;*/
+   width: 100%;
+}
+   
+
+
+/*map {
+   padding-left: 350px;
+   padding-top: 0px;
+   height: 100%;
+   width: 100%;
+
+ } */
+  }
 
 </style>
   </head>
@@ -154,9 +317,12 @@ tr {
   
 	
    <nav class="navbar">
-  <a href="GazetteerHome.html">
-    <img src="images/dR Gazetteer white_small_50%.png" alt="Gazetteer Logo" width="250">
-  </a>
+
+    <img src="images/dRGazetteer.png/" alt="Gazetteer Logo" width="100"">
+                                                                                                  
+                                                                                                  
+    
+  
 
   <br>
 
@@ -174,20 +340,21 @@ tr {
   <button class="tablinks" onclick="openCountry(event, 'Wikipedia')"><i class="fab fa-wikipedia-w" style='font-size:24px; color:white'></i></button>
   <button class="tablinks" onclick="openCountry(event, 'Weather')"><i class="fas fa-cloud-sun" style='font-size:24px; color:white'></i></button>
   <button class="tablinks" onclick="openCountry(event, 'COVID')"><i class="fas fa-virus" style='font-size:24px; color:white'></i></button>
-  <button class="tablinks" onclick="openCountry(event, 'Currency')"><i class='fas fa-pound-sign' style='font-size:24px; color:white'></i></button> 
+  <button class="tablinks" onclick="openCountry(event, 'Currency')"><i class="fas fa-pound-sign" style='font-size:24px; color:white'></i></button> 
   <button class="tablinks" onclick="openCountry(event, 'Continent')"><i class="fas fa-globe-europe" style='font-size:24px; color:white'></i></button>
   <button class="tablinks" onclick="openCountry(event, 'Architecture')"><i class="far fa-building" style='font-size:24px; color:white'></i></button>
   <button class="tablinks" onclick="openCountry(event, 'Wonders')"><i class="fas fa-landmark" style='font-size:24px; color:white'></i></button>
 </div>
+                                                                                             
     
     <!--General Tabs Display-->
 <div id="CountryInfo" class="tabcontent">
-  <h3>Country Info</h3>
+  <h1>Country Info</h1>
   <table>
     <tr>
       <th>Flag</th>
       <td>
-        <img src="" style="height: 70px" id="flag" />
+        <img src="" style="height: 50px" id="flag" />
       </td>
     </tr>
     <tr>
@@ -229,7 +396,7 @@ tr {
 </div>
 
 <div id="Weather" class="tabcontent">
-  <h3>Weather</h3> 
+  <h1>Weather</h1> 
   <table>
     <tr>
       <th>Temperature</th>
@@ -264,7 +431,7 @@ tr {
 </div>
     
     <div id="Currency" class="tabcontent">
-  <h3>Exchange</h3> 
+  <h1>Exchange</h1> 
   <table>
     <tr>
       <th>Choose Amount</th>
@@ -290,7 +457,7 @@ tr {
 </div>
 
 <div id="Wikipedia" class="tabcontent">
-  <h3>Wikipedia</h3> 
+  <h1>Wikipedia</h1> 
   <table>
     <tr>
       <th>Summary</th>
@@ -309,60 +476,424 @@ tr {
      
 
 <div id="COVID" class="tabcontent">
-  <h3>COVID-19</h3>
-  <table>
-    <tr>
-      <th>Confirmed</th>
-      <td id="covidConfirmed"></td>
-    </tr>
-    <tr>
-      <th>Critical</th>
-      <td id="covidRecovered"></td>
-    </tr>
-    <tr>
-      <th>Deaths</th>
-      <td id="covidDeaths"></td>
-    </tr>    
-    <tr>
-      <th>Cases per Million</th>
-      <td id="covidNewConfirmed"></td>
-    </tr>
-     <tr>
-      <th>Death Rate</th>
-      <td id="covidNewRecovered"></td>
-    </tr> 
-    <tr>
-      <th>Today Confirmed</th>
-      <td id="covidNewDeaths"></td>
-    </tr>
-    <tr>
-      <th>Today's Deaths</th>
-      <td id="covidDate"></td>
-    </tr>    
-   
-  </table>
+  <h1>COVID-19</h1>
+   <table>
+              <tr>
+                <th>Cases</th>
+                <td id="txtCovidCases"></td>
+              </tr>
+              <tr>
+                <th>Recovered</th>
+                <td id="txtCovidRecovered"></td>
+              </tr>
+              <tr>
+                <th>Deaths</th>
+                <td id="txtCovidDeaths"></td>
+              </tr>
+              <tr>
+                <th>Cases Per Million:</th>
+                <td id="txtCovidPerMillion"></td>
+              </tr>
+              <tr>
+                <th>Death Rate</th>
+                <td id="txtCovidDeathRate"></td>
+              </tr>
+              <tr>
+                <th>Recovery Rate:</th>
+                <td id="txtCovidRecoveryRate"></td>
+              </tr>            
+          </table>
 </div>
 
 <div id="Continent" class="tabcontent">
   <div class="btn-group">
-  <button>Continent Information</button>
-  <button>Africa</button>
-  <button>Antarctica</button>
-  <button>Asia</button>
-  <button>Europe</button>
-  <button>North America</button>
-  <button>Oceania</button>
-  <button>South America</button>
+  <button onclick="document.getElementById('continentInfo').style.display='block'" class="w3-button" style="z-index: 10">Continent Information</button>
+      <div id="continentInfo" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('continentInfo').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Continents</h2>
+      </header>
+      <div class="w3-container">
+       
+        <h3>Continent</h3>
+        <h4>/ˈkɒntɪnənt/</h4>
+        <br>
+        <p>Any of the world's main continuous expanses of land (Europe, Asia, Africa, North and South America, Australia, Antarctica). Variations with fewer continents may merge some of these, for example some systems include Eurasia or America as single continents.</p>
+        <p>About 250-million years ago, long, long after the Earth had formed, all the continents of the time had joined together to form a super-continent called Pangaea.</P>
+		<p>This super-continent broke up about 200-million years ago to form two giant continents, Gondwana and Laurasia. Gondwana comprised what is now Africa, South America, Australia, Antarctica and India. The Indian sub-continent lay off the east coast of Africa, before it broke off and moved north rapidly. It collided with Asia, creating one of the world’s greatest mountain ranges, which extends for more than 2,500 kilometres – the Himalayas.</p>
+		<p>By now, our world had started to look like something we would recognise. The amazing process of plate tectonics, in which the Earth’s land masses move slowly across the Earth’s crust, is still continuing.</p>
+        <br>
+        	
+      </div>
+  	</div>
+  </div>
+  <button onclick="document.getElementById('africa').style.display='block'" class="w3-button" style="z-index: 10">Africa</button>
+      <div id="africa" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('africa').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Africa</h2>
+      </header>
+      <div class="w3-container">
+        <br>
+        	<table>
+              <tr>
+                <th>Population</th>
+                <td>1.216 billion</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Population</th>
+                <td>Nigeria</td>
+              </tr>
+              <tr>
+                <th>Small Country by Population</th>
+                <td>Seychelles</td>
+              </tr>    
+              <tr>
+                <th>Area (km<sup>2</sup>)</th>
+                <td>30.37 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Area</th>
+                <td>Algeria</td>
+              </tr>  
+              <tr>
+                <th>Smallest Country by Area</th>
+                <td>Seychelles</td>
+              </tr>  
+              <tr>
+                <th>Number of Countries</th>
+                <td>54</td>
+              </tr>  
+            </table>
+      	<br>
+      </div>
+  	</div>
+  </div>
+  <button onclick="document.getElementById('antarctica').style.display='block'" class="w3-button" style="z-index: 10">Antarctica</button>
+      <div id="antarctica" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('antarctica').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Antarctica</h2>
+      </header>
+      <div class="w3-container">
+        <br>
+        	<table>
+              <tr>
+                <th>Population</th>
+                <td>1,000 to 5,000 (seasonal) / (approximately 20million breeding pairs of penguins)</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Population</th>
+                <td>N/A</td>
+              </tr>
+              <tr>
+                <th>Small Country by Population</th>
+                <td>N/A</td>
+              </tr>    
+              <tr>
+                <th>Area (km<sup>2</sup>)</th>
+                <td>14.2 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Area</th>
+                <td>N/A</td>
+              </tr>  
+              <tr>
+                <th>Smallest Country by Area</th>
+                <td>N/A</td>
+              </tr>  
+              <tr>
+                <th>Number of Countries</th>
+                <td>0 (seven sovereign states that have territorial claims in Antarctica: Argentina, Australia, Chile, France, New Zealand, Norway, and the United Kingdom.)</td>
+              </tr>  
+            </table>
+      	<br>
+      </div>
+  	</div>
+  </div>
+  <button onclick="document.getElementById('asia').style.display='block'" class="w3-button" style="z-index: 10">Asia</button>
+      <div id="asia" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('asia').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Asia</h2>
+      </header>
+      <div class="w3-container">
+        <br>
+        	<table>
+              <tr>
+                <th>Population</th>
+                <td>4.561 billion</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Population</th>
+                <td>China</td>
+              </tr>
+              <tr>
+                <th>Small Country by Population</th>
+                <td>Brunei</td>
+              </tr>    
+              <tr>
+                <th>Area (km<sup>2</sup>)</th>
+                <td>44.58 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Area</th>
+                <td>Russia</td>
+              </tr>  
+              <tr>
+                <th>Smallest Country by Area</th>
+                <td>Maldives</td>
+              </tr>  
+              <tr>
+                <th>Number of Countries</th>
+                <td>50</td>
+              </tr>  
+            </table>
+      	<br>
+      </div>
+  	</div>
+  </div>
+  <button onclick="document.getElementById('europe').style.display='block'" class="w3-button" style="z-index: 10">Europe</button>
+      <div id="europe" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('europe').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Europe</h2>
+      </header>
+      <div class="w3-container">
+        <br>
+        	<table>
+              <tr>
+                <th>Population</th>
+                <td>746.4 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Population</th>
+                <td>Russia</td>
+              </tr>
+              <tr>
+                <th>Small Country by Population</th>
+                <td>Vatican City (Holy See)</td>
+              </tr>    
+              <tr>
+                <th>Area (km<sup>2</sup>)</th>
+                <td>10.18 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Area</th>
+                <td>Russia</td>
+              </tr>  
+              <tr>
+                <th>Smallest Country by Area</th>
+                <td>Vatican City (Holy See)</td>
+              </tr>  
+              <tr>
+                <th>Number of Countries</th>
+                <td>51</td>
+              </tr>  
+            </table>
+      	<br>
+      </div>
+  	</div>
+  </div>
+  <button onclick="document.getElementById('northAmerica').style.display='block'" class="w3-button" style="z-index: 10">North America</button>
+      <div id="northAmerica" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('northAmerica').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>North America</h2>
+      </header>
+      <div class="w3-container">
+        <br>
+        	<table>
+              <tr>
+                <th>Population</th>
+                <td>579 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Population</th>
+                <td>United States of America</td>
+              </tr>
+              <tr>
+                <th>Small Country by Population</th>
+                <td>Saint Kitts and Nevis</td>
+              </tr>    
+              <tr>
+                <th>Area (km<sup>2</sup>)</th>
+                <td>24.71 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Area</th>
+                <td>Canada</td>
+              </tr>  
+              <tr>
+                <th>Smallest Country by Area</th>
+                <td>Saint Kitts and Nevis</td>
+              </tr>  
+              <tr>
+                <th>Number of Countries</th>
+                <td>23 (and 22 territories)</td>
+              </tr>  
+            </table>
+      	<br>
+      </div>
+  	</div>
+  </div>
+  <button onclick="document.getElementById('oceania').style.display='block'" class="w3-button" style="z-index: 10">Oceania</button>
+      <div id="oceania" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('oceania').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Oceania</h2>
+      </header>
+      <div class="w3-container">
+        <br>
+        	<table>
+              <tr>
+                <th>Population</th>
+                <td>43.1 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Population</th>
+                <td>Australia</td>
+              </tr>
+              <tr>
+                <th>Small Country by Population</th>
+                <td>Nauru</td>
+              </tr>    
+              <tr>
+                <th>Area (km<sup>2</sup>)</th>
+                <td>8.526 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Area</th>
+                <td>Australia</td>
+              </tr>  
+              <tr>
+                <th>Smallest Country by Area</th>
+                <td>Nauru</td>
+              </tr>  
+              <tr>
+                <th>Number of Countries</th>
+                <td>14 (and 12 overseas dependent territories)</td>
+              </tr>  
+            </table>
+      	<br>
+      </div>
+  	</div>
+  </div>
+  <button onclick="document.getElementById('southAmerica').style.display='block'" class="w3-button" style="z-index: 10">South America</button>
+      <div id="southAmerica" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('southAmerica').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>South America</h2>
+      </header>
+      <div class="w3-container">
+        <br>
+        	<table>
+              <tr>
+                <th>Population</th>
+                <td>422.5 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Population</th>
+                <td>Brazil</td>
+              </tr>
+              <tr>
+                <th>Small Country by Population</th>
+                <td>Suriname</td>
+              </tr>    
+              <tr>
+                <th>Area (km<sup>2</sup>)</th>
+                <td>17.84 million</td>
+              </tr>
+              <tr>
+                <th>Largest Country by Area</th>
+                <td>Brazil</td>
+              </tr>  
+              <tr>
+                <th>Smallest Country by Area</th>
+                <td>Suriname</td>
+              </tr>  
+              <tr>
+                <th>Number of Countries</th>
+                <td>12 (and 3 dependent territories)</td>
+              </tr>  
+            </table>
+      	<br> 
+      </div>
+  	</div>
+  </div>
   </div>
 </div>
 
 <div id="Architecture" class="tabcontent">
   <div class="btn-group">
-  <button>Iconic Architecture in the World</button>
+   <button onclick="document.getElementById('id02').style.display='block'" class="w3-button" style="z-index: 10">Iconic Architecture</button>
+      <div id="id02" class="w3-modal">
+    <div class="w3-modal-content w3-animate-top w3-card-4">
+      <header class="w3-container w3-teal"> 
+        <span onclick="document.getElementById('id02').style.display='none'" 
+        class="w3-button w3-display-topright">&times;</span>
+        <h2>Iconic Architecture</h2>
+      </header>
+      <div class="w3-container">
+        <h3>Iconic Architecture</h3>
+        	<p>The compiled buildings have been chosen from my personal inspiration throughout my education and career, in addition to its own individual importance across the world.</p>
+            <p>The list is shown below. Please click on the Tabs in the menu to shown its location.</p>
+                               
+        <br>
+        	<table>
+              <tr>
+                <th>Burj Khalifa</th>
+                <td>Dubai, United Arab Emirates</td>
+              </tr>
+              <tr>
+                <th>Chrysler Building</th>
+                <td>New York City, United States of America</td>
+              </tr>
+              <tr>
+                <th>Florence Cathedral</th>
+                <td>Florence, Italy</td>
+              </tr>
+              <tr>
+                <th>Heydar Aliyev Center</th>
+                <td>Baku, Azerbaijan</td>
+              </tr>    
+              <tr>
+                <th>Royal Liver Building</th>
+                <td>Liverpool, United Kingdom</td>
+              </tr>  
+              <tr>
+                <th>Shanghai Tower</th>
+                <td>Shanghai, China</td>
+              </tr>  
+              <tr>
+                <th>Sydney Opera House</th>
+                <td>Sydney, Australia</td>
+              </tr>  
+            </table>
+            <br>
+      </div>
+  	</div>
+  </div>
   <button>Burj Khalifa</button>
+  <button>Chrysler Building</button>
   <button>Florence Cathedral</button>  
   <button>Heydar Aliyev Center</button>
-  <button>Chrysler Building</button>
   <button>Royal Liver Building</button>
   <button>Sydney Opera House</button>
   <button>Shanghai Tower</button>
@@ -380,9 +911,42 @@ tr {
         <h2>Wonders of the World</h2>
       </header>
       <div class="w3-container">
-        <p>New 7 Wonders of the World was a campaign started in 2000 to choose Wonders of the World from a selection of 200 existing monuments. The seven winners were chosen from 21 candidates, which had been whittled down from 77 choices by a panel in 2006.</p>
-      </div>
-      
+      <h3>Wonders of the World</h3>
+        <p>Various lists of the Wonders of the World have been compiled from antiquity to the present day, to catalogue the world's most spectacular natural wonders and human-built structures.</p>
+        <p><a href="https://world.new7wonders.com/" target="_blank">New 7 Wonders of the World</a> was a campaign started in 2000 to choose Wonders of the World from a selection of 200 existing monuments. The seven winners were chosen from 21 candidates, which had been whittled down from 77 choices by a panel in 2006. The New 7 Wonders of the World are listed below.</p>
+      	<br>
+        	<table>
+              <tr>
+                <th>Chichén Itzá</th>
+                <td>Yucatan, Mexico</td>
+              </tr>
+              <tr>
+                <th>Christ the Redeemer</th>
+                <td>Rio de Janeiro, Brazil</td>
+              </tr>
+              <tr>
+                <th>Colosseum</th>
+                <td>Rome, Italy</td>
+              </tr>    
+              <tr>
+                <th>Great Wall of China</th>
+                <td>Huairou District, China</td>
+              </tr>
+              <tr>
+                <th>Machu Picchu</th>
+                <td>Cuzco Region, Peru</td>
+              </tr>  
+              <tr>
+                <th>Petra</th>
+                <td>Ma'an Governorate, Jordan</td>
+              </tr>  
+              <tr>
+                <th>Taj Mahal</th>
+                <td>Agra, India</td>
+              </tr>  
+            </table>
+            <br>
+    	</div>
     </div>
   </div>
     <button>Chichén Itzá</button>
@@ -403,13 +967,9 @@ tr {
    
 	   
 
-    <div id="map" style="width:75%; height:100%; position:absolute; right:0%; z-index: 0"></div>
+    <div id="map"></div>
     
-   
-	
-	
-
-                
+               
 	
 	<script type="application/javascript" src="js/jquery-2.2.3.min.js"></script>
     <script src="js/leaflet.js"></script>
@@ -440,6 +1000,8 @@ function openCountry(evt, countryName) {
   document.getElementById(countryName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+
 
 // Get the element with id="defaultOpen" and click on it
 document.getElementById("defaultOpen").click();
