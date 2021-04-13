@@ -33,37 +33,53 @@ let global_country;
  
  // L.marker([51.941196,4.512291], {icon: greenMarker}).addTo(map);
    
+ 
 
 // wonders of the world
+    
+    
     var marker = L.marker([-22.9519, -43.2105], {icon: greenMarker}) //christ the redeemer
             .addTo(map)
-            .bindPopup("<b>Christ the Redeemer</b><br>Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil, created by French sculptor Paul Landowski and built by Brazilian engineer Heitor da Silva Costa, in collaboration with French engineer Albert Caquot. Romanian sculptor Gheorghe Leonida fashioned the face. Constructed between 1922 and 1931, the statue is 30 metres (98 ft) high, excluding its 8-metre (26 ft) pedestal. The arms stretch 28 metres (92 ft) wide.<br><a href='https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)' target='_blank'>https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)</a>")
+            .bindPopup("<img src='../images/WondersTab/ChristTheRedeemer_500x500.png' alt='Christ the Redeemer' width='100%'><br><b>Christ the Redeemer</b><br>Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil, created by French sculptor Paul Landowski and built by Brazilian engineer Heitor da Silva Costa, in collaboration with French engineer Albert Caquot. Romanian sculptor Gheorghe Leonida fashioned the face. Constructed between 1922 and 1931, the statue is 30 metres (98 ft) high, excluding its 8-metre (26 ft) pedestal. The arms stretch 28 metres (92 ft) wide.<br><a href='https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)' target='_blank'>https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)</a>")
             .openPopup();
     var marker = L.marker([20.6843, -88.5678], {icon: greenMarker}) //chichen itza
             .addTo(map)
-            .bindPopup("<b>Chichén Itzá</b><br>Chichén Itzá was a large pre-Columbian city built by the Maya people of the Terminal Classic period. The archaeological site is located in Tinúm Municipality, Yucatán State, Mexico.<br><a href='https://en.wikipedia.org/wiki/Chichen_Itza' target='_blank'>https://en.wikipedia.org/wiki/Chichen_Itza</a>")
+            .bindPopup("<img src='../images/WondersTab/ChichenItza_500x500.png' alt='Chichen Itza' width='100%'><br><b>Chichén Itzá</b><br>Chichén Itzá was a large pre-Columbian city built by the Maya people of the Terminal Classic period. The archaeological site is located in Tinúm Municipality, Yucatán State, Mexico.<br><a href='https://en.wikipedia.org/wiki/Chichen_Itza' target='_blank'>https://en.wikipedia.org/wiki/Chichen_Itza</a>")
             .openPopup();
     var marker = L.marker([41.8902, 12.4922], {icon: greenMarker}) //colosseum
             .addTo(map)
-            .bindPopup("<b>Colosseum</b><br>An oval amphitheatre in the centre of the city of Rome, Italy.")
+            .bindPopup("<img src='../images/WondersTab/Colosseum_500x500.png' alt='Colosseum' width='100%'><br><b>Colosseum</b><br>An oval amphitheatre in the centre of the city of Rome, Italy.<br><a href='https://en.wikipedia.org/wiki/Colosseum' target='_blank'>https://en.wikipedia.org/wiki/Colosseum</a>")
             .openPopup();
     var marker = L.marker([40.4319, 116.5704], {icon: greenMarker}) //great wall
             .addTo(map)
-            .bindPopup("<b>Great Wall of China</b><br>A series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe.")
+            .bindPopup("<img src='../images/WondersTab/GreatWallofChina_500x500.png' alt='Great Wall of China' width='100%'><br><b>Great Wall of China</b><br>A series of fortifications that were built across the historical northern borders of ancient Chinese states and Imperial China as protection against various nomadic groups from the Eurasian Steppe.<br><a href='https://en.wikipedia.org/wiki/Great_Wall_of_China' target='_blank'>https://en.wikipedia.org/wiki/Great_Wall_of_China</a>")
             .openPopup();
     var marker = L.marker([-13.1631, -72.5450], {icon: greenMarker}) //machu picchu
             .addTo(map)
-            .bindPopup("<b>Machu Picchu</b><br>A 15th-century Inca citadel, located in the Eastern Cordillera of southern Peru, on a 2,430-metre (7,970 ft) mountain ridge.")
+            .bindPopup("<img src='../images/WondersTab/MachuPicchu_500x500.png' alt='Machu Picchu' width='100%'><br><b>Machu Picchu</b><br>A 15th-century Inca citadel, located in the Eastern Cordillera of southern Peru, on a 2,430-metre (7,970 ft) mountain ridge.<br><a href='https://en.wikipedia.org/wiki/Machu_Picchu' target='_blank'>https://en.wikipedia.org/wiki/Machu_Picchu</a>")
             .openPopup();
     var marker = L.marker([30.3285, 35.4444], {icon: greenMarker}) //petra
             .addTo(map)
-            .bindPopup("<b>Petra</b><br>A historic and archaeological city in southern Jordan.")
+            .bindPopup("<img src='../images/WondersTab/Petra_500x500.png' alt='Petra' width='100%'><br><b>Petra</b><br>A historic and archaeological city in southern Jordan.<br><a href='https://en.wikipedia.org/wiki/Petra' target='_blank'>https://en.wikipedia.org/wiki/Petra</a>")
             .openPopup();
     var marker = L.marker([27.1751, 78.0421], {icon: greenMarker}) // taj mahal
             .addTo(map)
-            .bindPopup("<b>Taj Mahal</b><br>An ivory-white msrble mausoleum on the southern bank of the river Yamuna in the Indian city of Agra.")
+            .bindPopup("<img src='../images/WondersTab/TajMahal_500x500.png' alt='Taj Mahal' width='100%'><br><b>Taj Mahal</b><br>An ivory-white marble mausoleum on the southern bank of the river Yamuna in the Indian city of Agra.<br><a href='https://en.wikipedia.org/wiki/Taj_Mahal' target='_blank'>https://en.wikipedia.org/wiki/Taj_Mahal</a>")
             .openPopup();
+    		
     
+    
+var location = L.easyButton({
+    position: 'topleft',
+    id: 'locationBtn',
+    states: [{
+        icon: '<i class="fas fa-map-marker-alt"></i>',
+        title: 'Location',
+        onClick: function (control) { $('#location').marker('show') },
+
+        }]
+})
+location.addTo(map);
     
 var orangeMarker = L.ExtraMarkers.icon({
     icon: 'far fa-building',
@@ -77,45 +93,36 @@ var orangeMarker = L.ExtraMarkers.icon({
  // architecture
     var marker = L.marker([25.1972, 55.2744], {icon: orangeMarker}) //burj khalifa
             .addTo(map)
-    		.bindPopup("<b>Burj Khalifa</b><br>The Burj Khalifa is the world's tallest building located in Dubai with a height of 828m (2,717ft).<br><a href='https://en.wikipedia.org/wiki/Burj_Khalifa' target='_blank'>https://en.wikipedia.org/wiki/Burj_Khalifa</a>")
+    		.bindPopup("<img src='../images/ArchitectureTab/BurjKhalifa_500x500.png' alt='Burj Khalifa' width='100%'><br><b>Burj Khalifa</b><br>The Burj Khalifa is the world's tallest building located in Dubai with a height of 828m (2,717ft).<br><a href='https://en.wikipedia.org/wiki/Burj_Khalifa' target='_blank'>https://en.wikipedia.org/wiki/Burj_Khalifa</a>")
             .openPopup();  		
     var marker = L.marker([43.7731, 11.2560], {icon: orangeMarker}) //florence cathedral
             .addTo(map)
-    		.bindPopup("<b>Florence Cathedral</b><br>Florence Cathedral began in 1296 to a design of Arnolfo di Cambio and was structurally completed by 1436, with the dome engineered by Filippo Brunelleschi.<br><a href='https://en.wikipedia.org/wiki/Florence_Cathedral' target='_blank'>https://en.wikipedia.org/wiki/Florence_Cathedral</a>")
+    		.bindPopup("<img src='../images/ArchitectureTab/FlorenceDuomo_500x500.png' alt='Florence Cathedral' width='100%'><br><b>Florence Cathedral</b><br>Florence Cathedral began in 1296 to a design of Arnolfo di Cambio and was structurally completed by 1436, with the dome engineered by Filippo Brunelleschi.<br><a href='https://en.wikipedia.org/wiki/Florence_Cathedral' target='_blank'>https://en.wikipedia.org/wiki/Florence_Cathedral</a>")
             .openPopup();
     var marker = L.marker([40.3959, 49.8678], {icon: orangeMarker}) //heydar aliyev center
             .addTo(map)
-            .bindPopup("<b>Heydar Aliyev Center</b><br>The Heydar Aliyev Center is a 57,500 m2 (619,000 sq ft) building complex in Baku, Azerbaijan designed by Iraqi-British architect Zaha Hadid and noted for its distinctive architecture and flowing, curved style that eschews sharp angles.<br><a href='https://en.wikipedia.org/wiki/Heydar_Aliyev_Center' target='_blank'>https://en.wikipedia.org/wiki/Heydar_Aliyev_Center</a>")
+            .bindPopup("<img src='../images/ArchitectureTab/HeydarAliyevCenter_500x500.png' alt='Heydar Aliyev Center' width='100%'><br><b>Heydar Aliyev Center</b><br>The Heydar Aliyev Center is a 57,500 m2 (619,000 sq ft) building complex in Baku, Azerbaijan designed by Iraqi-British architect Zaha Hadid and noted for its distinctive architecture and flowing, curved style that eschews sharp angles.<br><a href='https://en.wikipedia.org/wiki/Heydar_Aliyev_Center' target='_blank'>https://en.wikipedia.org/wiki/Heydar_Aliyev_Center</a>")
             .openPopup();
     var marker = L.marker([40.7516, -73.9755], {icon: orangeMarker}) //chrysler building
             .addTo(map)
-            .bindPopup("<b>Chrysler Building</b><br>The Chrysler Building is an Art Deco skyscraper in the Turtle Bay neighborhood on the East Side of Manhattan, New York City, at the intersection of 42nd Street and Lexington Avenue near Midtown Manhattan.<br><a href='https://en.wikipedia.org/wiki/Chrysler_Building' target='_blank'>https://en.wikipedia.org/wiki/Chrysler_Building</a>")
+            .bindPopup("<img src='../images/ArchitectureTab/ChryslerBuilding_500x500.png' alt='Chrysler Building' width='100%'><br><b>Chrysler Building</b><br>The Chrysler Building is an Art Deco skyscraper in the Turtle Bay neighborhood on the East Side of Manhattan, New York City, at the intersection of 42nd Street and Lexington Avenue near Midtown Manhattan.<br><a href='https://en.wikipedia.org/wiki/Chrysler_Building' target='_blank'>https://en.wikipedia.org/wiki/Chrysler_Building</a>")
             .openPopup();
     var marker = L.marker([53.4058, -2.9959], {icon: orangeMarker}) //royal liver building
             .addTo(map)
-            .bindPopup("<b>The Royal Liver Building</b><br>The Royal Liver Building is a Grade I listed building in Liverpool, England. It is located at the Pier Head and along with the neighbouring Cunard Building and Port of Liverpool Building is one of Liverpool's <em>Three Graces<em>, which line the city's waterfront. It is also part of Liverpool's UNESCO-designated World Heritage Maritime Mercantile City.<br><a href='https://en.wikipedia.org/wiki/Royal_Liver_Building' target='_blank'>https://en.wikipedia.org/wiki/Royal_Liver_Building</a>")
+            .bindPopup("<img src='../images/ArchitectureTab/RoyalLiverBuilding_500x500.png' alt='Royal Liver Building' width='100%'><br><b>The Royal Liver Building</b><br>The Royal Liver Building is a Grade I listed building in Liverpool, England. It is located at the Pier Head and along with the neighbouring Cunard Building and Port of Liverpool Building is one of Liverpool's <em>Three Graces<em>, which line the city's waterfront. It is also part of Liverpool's UNESCO-designated World Heritage Maritime Mercantile City.<br><a href='https://en.wikipedia.org/wiki/Royal_Liver_Building' target='_blank'>https://en.wikipedia.org/wiki/Royal_Liver_Building</a>")
             .openPopup();
     var marker = L.marker([-33.8568, 151.2153], {icon: orangeMarker}) //sydney opera house
             .addTo(map)
-            .bindPopup("<b>Sydney Opera House</b><br>The Sydney Opera House is a multi-venue performing arts centre at Sydney Harbour located in Sydney, New South Wales, Australia.<br><a href='https://en.wikipedia.org/wiki/Sydney_Opera_House' target='_blank'>https://en.wikipedia.org/wiki/Sydney_Opera_House</a>")
+            .bindPopup("<img src='../images/ArchitectureTab/SydneyOperaHouse_500x500.png' alt='SydneyOperaHouse' width='100%'><br><b>Sydney Opera House</b><br>The Sydney Opera House is a multi-venue performing arts centre at Sydney Harbour located in Sydney, New South Wales, Australia.<br><a href='https://en.wikipedia.org/wiki/Sydney_Opera_House' target='_blank'>https://en.wikipedia.org/wiki/Sydney_Opera_House</a>")
             .openPopup();
     var marker = L.marker([31.2335, 121.5056], {icon: orangeMarker}) //shanghai tower
             .addTo(map)
-            .bindPopup("<b>Shanghai Tower</b><br>The Shanghai Tower is a 128-story, 632-meter (2,073 ft)-tall megatall skyscraper in Lujiazui, Pudong, Shanghai.<br><a href='https://en.wikipedia.org/wiki/Shanghai_Tower' target='_blank'>https://en.wikipedia.org/wiki/Shanghai_Tower</a>")
+            .bindPopup("<img src='../images/ArchitectureTab/ShanghaiTower_500x500.png' alt='Shanghai Tower' width='100%'><br><b>Shanghai Tower</b><br>The Shanghai Tower is a 128-story, 632-meter (2,073 ft)-tall megatall skyscraper in Lujiazui, Pudong, Shanghai.<br><a href='https://en.wikipedia.org/wiki/Shanghai_Tower' target='_blank'>https://en.wikipedia.org/wiki/Shanghai_Tower</a>")
             .openPopup();
 	  
 	boundary = new L.geoJson().addTo(map); 	
 
-var location = L.easyButton({
-    position: 'topleft',
-    id: 'locationBtn',
-    states: [{
-        icon: '<i class="fas fa-map-marker-alt"></i>',
-        title: 'Location',
-        onClick: function (control) { $('#location').modal('show') },
-    }]
-})
-location.addTo(map);
+
     
 var architecture = L.easyButton({
     position: 'topleft',
@@ -258,7 +265,7 @@ function getCountryBorder() {
 			const north = bounds.getNorth();
 			const south = bounds.getSouth(); 
 			
-			get_wiki(north, south, east, west);
+			getWiki(north, south, east, west);
        
 		},
 	});
@@ -307,7 +314,7 @@ function get_country_info() {
 	});
 }
 
-function get_wiki(north, south, east, west){
+function getWiki(north, south, east, west){
 	wikipedia.clearLayers();
 	$.ajax({
 		url: "php/getWiki.php",
@@ -323,7 +330,7 @@ function get_wiki(north, south, east, west){
 	});
 }
 
-function get_wiki(north, south, east, west){
+function getWiki(north, south, east, west){
 	wikipedia.clearLayers();
 	$.ajax({
 		url: "php/getWiki.php",
@@ -343,7 +350,7 @@ function get_events(){
 	events.clearLayers();
 	
 	$.ajax({
-		url: "php/getEvents.php",
+		url: "getEvents.php",
 		type: "GET",
 		dataType: 'json',
 		data: {
@@ -385,7 +392,7 @@ function get_events(){
 
     $.ajax({
 
-        url: 'libs/php/getWiki.php',
+        url: 'php/getWiki.php',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -416,11 +423,11 @@ function get_events(){
 
 // weather 
 
-/* function getWeather() {
+/*function getWeather() {
 
     $.ajax({
 
-        url: 'libs/php/getWeather.php',
+        url: 'php/getWeather.php',
         type: 'GET',
         dataType: 'json',
         data: {
@@ -461,7 +468,7 @@ function get_events(){
 
     $.ajax({
 
-        url: 'libs/php/getCovidData.php',
+        url: 'php/getCovidData.php',
         type: 'GET',
         dataType: 'json',
         data: {
