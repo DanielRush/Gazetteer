@@ -13,7 +13,7 @@ for($i=0;$i<sizeof($features);$i++){
     $array = [$country_name,$country_iso_a2, $coords];
     array_push($countries, $array);
 }
-usort($all_countries, function($a, $b) {
+usort($countries, function($a, $b) {
     return strcasecmp($a[0], $b[0]);
 });
 print_r(json_encode($countries));
