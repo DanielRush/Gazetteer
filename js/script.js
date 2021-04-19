@@ -446,7 +446,7 @@ function getWeather() {
 
  // Exchange Rates
               $.ajax({
-                  url: "./php/exchangeRates.php",
+                  url: "./php/getExchangeRate.php",
                   type: 'GET',
                   dataType: 'json',
                   success: function(result) {
