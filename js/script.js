@@ -238,7 +238,10 @@ function move_map(country){
                   
 				getCountryBorder();                  	
 				get_country_info();
-              	getWiki();
+              	                getWiki();
+                                getWeather();
+                                getExchangeRates();
+                                getCovidData();
 			}			
 		},			
 	}); 
@@ -369,7 +372,6 @@ function get_events(){
             if (wikiResult.status.name == "ok") {
                 $('#wikiSummary').html(wikiResult['data']['geonames'][0]['summary']);
                 $('#wikiUrl').html(wikiResult['data']['geonames'][0]['wikipediaUrl']);
-              	$('#wikiImage').html(wikiResult['data']['geonames'][0]['thumbnailImg']);
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -445,6 +447,7 @@ function getWeather() {
 }
 
  // Exchange Rates
+function getExchangeRates() {
               $.ajax({
                   url: "./php/getExchangeRate.php",
                   type: 'GET',
@@ -454,10 +457,11 @@ function getWeather() {
                       if (result.status.name == "ok") {
                       
                       exchangeRate = result.exchangeRate.rates[currencyCode];
-                      $('#txtRate').html('Exchange Rate: <strong>' + exchangeRate.toFixed(3) + '</strong> ' + currencyCode + ' = <strong>1</strong> USD. <br>');
+                      $('#ExchangeRate').html('Exchange Rate: <strong>' + exchangeRate.toFixed(3) + '</strong> ' + currencyCode + ' = <strong>1</strong> USD. <br>');
                       }
                   },
                   error: function(jqXHR, textStatus, errorThrown) {
                       console.log(textStatus, errorThrown);
                   }
               }); 
+} 
