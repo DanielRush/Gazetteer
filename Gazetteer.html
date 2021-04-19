@@ -317,8 +317,8 @@ tr {
   
 	
    <nav class="navbar">
+		<img src="images/dRGazetteer.png/" alt="Gazetteer Logo" width="100"">
 
-    <img src="images/dRGazetteer.png/" alt="Gazetteer Logo" width="100"">
                                                                                                   
                                                                                                   
     
@@ -337,10 +337,10 @@ tr {
 <!--General Tabs-->
 <div class="tab">
   <button class="tablinks" onclick="openCountry(event, 'CountryInfo')" id="defaultOpen"><i class="fas fa-info" style='font-size:24px; color:white'></i></button>
+  <button class="tablinks" onclick="openCountry(event, 'Currency')"><i class="fas fa-pound-sign" style='font-size:24px; color:white'></i></button> 
   <button class="tablinks" onclick="openCountry(event, 'Wikipedia')"><i class="fab fa-wikipedia-w" style='font-size:24px; color:white'></i></button>
   <button class="tablinks" onclick="openCountry(event, 'Weather')"><i class="fas fa-cloud-sun" style='font-size:24px; color:white'></i></button>
   <button class="tablinks" onclick="openCountry(event, 'COVID')"><i class="fas fa-virus" style='font-size:24px; color:white'></i></button>
-  <button class="tablinks" onclick="openCountry(event, 'Currency')"><i class="fas fa-pound-sign" style='font-size:24px; color:white'></i></button> 
   <button class="tablinks" onclick="openCountry(event, 'Continent')"><i class="fas fa-globe-europe" style='font-size:24px; color:white'></i></button>
   <button class="tablinks" onclick="openCountry(event, 'Architecture')"><i class="far fa-building" style='font-size:24px; color:white'></i></button>
   <button class="tablinks" onclick="openCountry(event, 'Wonders')"><i class="fas fa-landmark" style='font-size:24px; color:white'></i></button>
@@ -434,25 +434,21 @@ tr {
   <h1>Exchange</h1> 
   <table>
     <tr>
-      <th>Choose Amount</th>
-      <td id="amount"><input type="text" value="1"></td>
+      <th>Currency</th>
+      <td id="txtCurrency"></td>
     </tr>
     <tr>
-      <th>From</th>
-      <td><select id="fromCurrency" style="text-align-last:center">
-    		<option value="">Select Currency</option>
- 		</select></td>
+      <th>Currency Symbol</th>
+      <td id="txtCurrencySymbol"></td>
     </tr>
     <tr>
-      <th>To</th>
-      <td><select id="toCurrency" style="text-align-last:center">
-    		<option value="">Select Currency</option>
- 		</select></td>
+      <th>Currency Code</th>
+      <td id="txtCurrencyCode"></td>
     </tr>
     <tr>
-      <th><button>Convert</button></th>
-      <td id="convertBtn"></td>
-    </tr>   
+      <th>Exchange Rate</th>
+      <td id="txtRate"></td>
+    </tr>  
   </table>
 </div>
 
@@ -466,10 +462,6 @@ tr {
     <tr>
       <th>Wikipedia Link</th>
       <td id="wikiUrl"></td>
-    </tr>
-    <tr>
-      <th>Image</th>
-      <td id="wikiImage"></td>
     </tr>
   </table>
 </div>     
