@@ -265,7 +265,7 @@ function getCountryBorder() {
 			const north = bounds.getNorth();
 			const south = bounds.getSouth(); 
 			
-			getWiki(north, south, east, west);
+			getWiki();
        
 		},
 	});
@@ -314,38 +314,6 @@ function get_country_info() {
 	});
 }
 
-function getWiki(north, south, east, west){
-	wikipedia.clearLayers();
-	$.ajax({
-		url: "php/getWiki.php",
-		type: "GET",
-		dataType: 'json',
-		data: {
-			north: north,
-            south: south,
-            east: east,
-           	west: west
-		},
-		
-	});
-}
-
-function getWiki(north, south, east, west){
-	wikipedia.clearLayers();
-	$.ajax({
-		url: "php/getWiki.php",
-		type: "GET",
-		dataType: 'json',
-		data: {
-			north: north,
-            south: south,
-            east: east,
-           	west: west
-		},
-		
-	});
-}
-
 function get_events(){
 	events.clearLayers();
 	
@@ -388,45 +356,34 @@ function get_events(){
 
 //wikipedia links
 
-/* function getWiki() {
-
+ function getWiki() {
     $.ajax({
-
         url: 'php/getWiki.php',
         type: 'GET',
         dataType: 'json',
         data: {
             q: $("#q").val(),
         },
-
         success: function(wikiResult) {
-
             console.log(wikiResult);
-
             if (wikiResult.status.name == "ok") {
-
                 $('#wikiSummary').html(wikiResult['data']['geonames'][0]['summary']);
                 $('#wikiUrl').html(wikiResult['data']['geonames'][0]['wikipediaUrl']);
               	$('#wikiImage').html(wikiResult['data']['geonames'][0]['thumbnailImg']);
-
             }
         },
-
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('ERROR');
             console.error(errorThrown);
         }
     }); 
-
-}); */
+}
 
 
 // weather 
 
-/*function getWeather() {
-
+function getWeather() {
     $.ajax({
-
         url: 'php/getWeather.php',
         type: 'GET',
         dataType: 'json',
@@ -434,13 +391,9 @@ function get_events(){
             lat: $("#lat").val(),
             lng: $("#lng").val(),
         },
-
         success: function(weatherResult) {
-
             console.log(weatherResult);
-
             if (weatherResult.status.name == "ok") {
-
                 $('#weatherMain').html(weatherResult['data']['weather'][0]['main']);
                 $('#weatherDescription').html(weatherResult['data']['weather'][0]['description']);
                 $('#weatherTemp').html(weatherResult['data']['main'][0]['temp']);
@@ -452,22 +405,18 @@ function get_events(){
                 $('#weatherWindSpeed').html(weatherResult['data']['wind'][0]['speed']);
             }
         },
-
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('ERROR');
             console.error(errorThrown);
         }
     }); 
-
-}); */
+}
 
 
 
 // covid data
-/* function getCovidData() {
-
+ function getCovidData() {
     $.ajax({
-
         url: 'php/getCovidData.php',
         type: 'GET',
         dataType: 'json',
@@ -476,13 +425,9 @@ function get_events(){
             startDate: $("#startDate").val(),
             endDate: $("#endDate").val(),
         },
-
         success: function(CovidResult) {
-
             console.log(CovidResult);
-
             if (CovidResult.status.name == "ok") {
-
                 $('#covidConfirmed').html(covidResult['data']['Countries'][0]['TotalConfirmed']);
                 $('#covidRecovered').html(covidResult['data']['Countries'][0]['TotalRecovered']);
               	$('#covidDeaths').html(covidResult['data']['Countries'][0]['TotalDeaths']);
@@ -490,14 +435,29 @@ function get_events(){
                 $('#covidNewRecovered').html(covidResult['data']['Countries'][0]['NewRecovered']);
                 $('#covidNewDeaths').html(covidResult['data']['Countries'][0]['NewDeaths']);
                 $('#covidDate').html(covidResult['data']['Countries'][0]['Date']);
-
             }
         },
-
         error: function(jqXHR, textStatus, errorThrown) {
             console.log('ERROR');
             console.error(errorThrown);
         }
     }); 
+}
 
-}); */
+ // Exchange Rates
+              $.ajax({
+                  url: "./php/exchangeRates.php",
+                  type: 'GET',
+                  dataType: 'json',
+                  success: function(result) {
+                      console.log('exchange rates',result);
+                      if (result.status.name == "ok") {
+                      
+                      exchangeRate = result.exchangeRate.rates[currencyCode];
+                      $('#txtRate').html('Exchange Rate: <strong>' + exchangeRate.toFixed(3) + '</strong> ' + currencyCode + ' = <strong>1</strong> USD. <br>');
+                      }
+                  },
+                  error: function(jqXHR, textStatus, errorThrown) {
+                      console.log(textStatus, errorThrown);
+                  }
+              }); 
