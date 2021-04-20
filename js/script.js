@@ -452,12 +452,18 @@ function getExchangeRates() {
                   url: "./php/getExchangeRate.php",
                   type: 'GET',
                   dataType: 'json',
-                  success: function(result) {
-                      console.log('exchange rates',result);
-                      if (result.status.name == "ok") {
-                      
-                      exchangeRate = result.exchangeRate.rates[currencyCode];
+                  success: function(exchangeRatesResult) {
+                      console.log(exchangeRatesResult);
+                      if (exchangeRatesResult.status.name == "ok") {
+			      
+                      $('#currencySymbol').html(exchangeRatesResult['data']['symbols']);
+              	      $('#currencyCode').html(exchangeRatesResult['data']['base']);
+                      $('#exchangeRate').html(exchangeRatesResult['data']['rates']);
+			      
+                      /*exchangeRate = result.exchangeRate.rates[currencyCode];
                       $('#ExchangeRate').html('Exchange Rate: <strong>' + exchangeRate.toFixed(3) + '</strong> ' + currencyCode + ' = <strong>1</strong> USD. <br>');
+			*/      
+			      
                       }
                   },
                   error: function(jqXHR, textStatus, errorThrown) {
