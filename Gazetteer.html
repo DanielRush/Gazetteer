@@ -75,7 +75,7 @@ p {
 
 .navbar img {
   margin: 20px;
-  width: 300px;
+  width: 250px;
 }
 
 .navbar select {
@@ -315,7 +315,7 @@ tr {
   
 	
    <nav class="navbar">
-		<img src="images/dRGazetteer.png/" alt="Gazetteer Logo" width="100"">
+		<img src="images/dRGazetteer.png" alt="Gazetteer Logo" width="75">
 
                                                                                                   
                                                                                                   
@@ -366,10 +366,6 @@ tr {
     <tr>
       <th>Area (km<sup>2</sup>)</th>
       <td id="area"></td>
-    </tr>    
-    <tr>
-      <th>Currency</th>
-      <td id="currency"></td>
     </tr>
     <tr>
       <th>Sub Region</th>
@@ -397,32 +393,32 @@ tr {
   <h1>Weather</h1> 
   <table>
     <tr>
-      <th>Temperature</th>
+      <th>Temperature (°C)</th>
       <td id="weatherTemp"></td>
     </tr>
     <tr>
-      <th>Feels Like</th>
+      <th>Feels Like (°C)</th>
       <td id="weatherFeelsLike"></td>
     </tr>
     <tr>
-      <th>Maximum Temperature</th>
+      <th>Maximum Temperature (°C)</th>
       <td id="weatherTempMax"></td>
     </tr>
     <tr>
-      <th>Minimum Temperature</th>
+      <th>Minimum Temperature (°C)</th>
       <td id="weatherTempMin"></td>
     </tr>    
     <tr>
-      <th>Weather</th>
+      <th>Condition</th>
       <td id="weatherMain"></td>
     </tr>
     <tr>
-      <th>Wind Speed</th>
+      <th>Wind Speed (m/s)</th>
       <td id="weatherWindSpeed"></td>
     </tr>
     <tr>
-      <th>Humidity</th>
-      <td id="weatherDescription"></td>
+      <th>Humidity (%)</th>
+      <td id="weatherHumidity"></td>
     </tr>    
    
   </table>
@@ -444,7 +440,7 @@ tr {
       <td id="currencyCode"></td>
     </tr>
     <tr>
-      <th>Exchange Rate</th>
+      <th>Exchange Rate to US Dollar</th>
       <td id="exchangeRate"></td>
     </tr>  
   </table>
@@ -485,8 +481,8 @@ tr {
                 <td id="covidNewConfirmed"></td>
               </tr>
               <tr>
-                <th>New Recovered:</th>
-                <td id="txtCovidRecoveryRate"></td>
+                <th>New Recovered</th>
+                <td id="covidNewRecovered"></td>
               </tr>
               <tr>
                 <th>New Deaths</th>
@@ -881,13 +877,13 @@ tr {
       </div>
   	</div>
   </div>
-  <button>Burj Khalifa</button>
-  <button>Chrysler Building</button>
-  <button>Florence Cathedral</button>  
-  <button>Heydar Aliyev Center</button>
-  <button>Royal Liver Building</button>
-  <button>Sydney Opera House</button>
-  <button>Shanghai Tower</button>
+  <button onclick="moveToLocation('burj_khalifa', 25.1972, 55.2744)">Burj Khalifa</button>
+  <button onclick="moveToLocation('chrysler_building', 40.7516, -73.9755)">Chrysler Building</button>
+  <button onclick="moveToLocation('florence_cathedral', 43.7731, 11.2560)">Florence Cathedral</button>  
+  <button onclick="moveToLocation('heydar_aliyev_center', 40.3959, 49.8678)">Heydar Aliyev Center</button>
+  <button onclick="moveToLocation('royal_liver_building', 53.4058, -2.9959)">Royal Liver Building</button>
+  <button onclick="moveToLocation('sydney_opera_house', -33.8568, 151.2153)">Sydney Opera House</button>
+  <button onclick="moveToLocation('shanghai_tower', 31.2335, 121.5056)">Shanghai Tower</button>
   </div>
 </div>
     
@@ -940,13 +936,13 @@ tr {
     	</div>
     </div>
   </div>
-    <button>Chichén Itzá</button>
-    <button>Christ the Redeemer</button>  
-    <button>Colosseum</button>
-    <button>Great Wall of China</button>
-    <button>Machu Picchu</button>
-    <button>Petra</button>
-    <button>Taj Mahal</button>
+    <button onclick="moveToLocation('chichen_itza', 20.6843, -88.5678)">Chichén Itzá</button>
+    <button onclick="moveToLocation('christ_the_redeemer', -22.9519, -43.2105)">Christ the Redeemer</button>  
+    <button onclick="moveToLocation('colosseum', 41.8902, 12.4922)">Colosseum</button>
+    <button onclick="moveToLocation('great_wall_of_china', 40.4319, 116.5704)">Great Wall of China</button>
+    <button onclick="moveToLocation('machu_picchu', -13.1631, -72.5450)">Machu Picchu</button>
+    <button onclick="moveToLocation('petra', 30.3285, 35.4444)">Petra</button>
+    <button onclick="moveToLocation('taj_mahal', 27.1751, 78.0421)">Taj Mahal</button>
      
      
   </div>
