@@ -98,4 +98,9 @@ html, body {
         margin: auto;
       }
 
-    
+     @media screen and (max-width: 1024px) {
+        .navbar {
+          width: 100%;
+          height: 200px;
+          margin: auto;
+        }
