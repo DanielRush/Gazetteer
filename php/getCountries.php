@@ -14,5 +14,14 @@ for($i=0;$i<sizeof($features);$i++){
 usort($countries, function($a, $b) {
     return strcasecmp($a[0], $b[0]);
 });
-print_r(json_encode($countries));
+
+	$output['status']['code'] = "200";
+    $output['status']['name'] = "ok";
+    $output['status']['description'] = "success";
+    $output['status']['executedIn'] = intval((microtime(true) - $executionStartTime) * 1000) . " ms";
+
+
+  
+echo(json_encode($countries));
+
 ?>
