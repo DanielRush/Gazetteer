@@ -8,4 +8,9 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_URL,$wikiUrl);
 $wikiResult=curl_exec($ch);
 curl_close($ch);
+$output['status']['code'] = "200";
+    $output['status']['name'] = "ok";
+    $output['status']['description'] = "success";
+    $output['status']['executedIn'] = intval((microtime(true) - $executionStartTime) * 1000) . " ms";
 echo $wikiResult;
+?>
