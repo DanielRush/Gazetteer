@@ -19,6 +19,12 @@ curl_setopt_array($curl, array(
   CURLOPT_CUSTOMREQUEST => 'GET',
 ));
 
+	$output['status']['code'] = "200";
+    $output['status']['name'] = "ok";
+    $output['status']['description'] = "success";
+    $output['status']['executedIn'] = intval((microtime(true) - $executionStartTime) * 1000) . " ms";
+
 $response = curl_exec($curl);
 curl_close($curl);
 echo $response;
+?>
