@@ -10,4 +10,11 @@ for($i=0;$i<sizeof($features);$i++){
         $output_geom = $feature->geometry;
     }
 }
-print_r(json_encode($output_geom));
+
+	$output['status']['code'] = "200";
+    $output['status']['name'] = "ok";
+    $output['status']['description'] = "success";
+    $output['status']['executedIn'] = intval((microtime(true) - $executionStartTime) * 1000) . " ms";
+
+echo(json_encode($output_geom));
+?>
