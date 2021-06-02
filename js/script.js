@@ -385,11 +385,11 @@ map.addLayer(markers);
 
 var cityIcon = L.ExtraMarkers.icon({
     iconClasses: "far fa-building",
-    markerColor: '#F3D849',
+    markerColor: '#F78104',
     markerFillOpacity: 0.95,
-    markerStrokeWidth: 1,
-    markerStrokeColor: "grey",
-    iconColor: "teal",
+    /*markerStrokeWidth: 1,
+    markerStrokeColor: "grey",*/
+    iconColor: "white",
     iconXOffset: -1,
     iconYOffset: -10
 })
