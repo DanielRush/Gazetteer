@@ -13,51 +13,14 @@
   	<link rel="stylesheet" href="css/leaflet.css" />
   	<link rel="stylesheet" href="css/leaflet.extra-markers.min.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
-	  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
    
     <link rel="stylesheet" href="css/style.css"/>
     
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  
   	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
  	  <script src="https://kit.fontawesome.com/7ec3e40f77.js" crossorigin="anonymous"></script>
 
-     <style>
-      .btn-lg {
-        background-color: #48B4AA;
-        color: white;
-        border: none;
-        width: 50px;
-        height: 50px;
-        border-radius: none;
-        text-align: center;
-	position:relative;
-      	z-index: 1;
-       
-      }
-      
-      .btn-lg:hover {
-        background-color: #F78104;
-      }
-
-      .btn-lg.active {
-        background-color: #F78104;
-      }
-
-      .btn-lg.selected {
-        background-color: #F78104;
-      }
-
-      .container {
-      display:inline-block;
-      
-     }
-
-     .modal-content {
-       z-index: 15;
-     }
-
-     </style>
 
   </head>
 
@@ -68,13 +31,13 @@
    <nav class="navbar">
 		<img src="images/dRGazetteer.png" alt="Gazetteer Logo" width="100">
 
-  <br>
+  
 
-  <select id="countries" onchange="move_map(this.value)" style="text-align-last:center">
+  <select id="countries" onchange="move_map(this.value)" style="text-align-last:center" class="form-select" aria-label="Default select example">
     <option value="">Select Country</option>
   </select>
 
-  <br>
+  
 
 </nav>
 
@@ -95,18 +58,12 @@
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Country Info</h4>
+          <h4 class="modal-title"><img src="" style="height: 50px" id="flag"/><a id="country"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>          
         </div>
         <div class="modal-body">
           <div id="CountryInfo" class="tabcontent">
-            <table>
-              <tr>
-                <th>Flag</th>
-                <td>
-                  <img src="" style="height: 50px" id="flag" />
-                </td>
-              </tr>
+            <table class="table table-striped">
               <tr>
                 <th>Capital</th>
                 <td id="capital"></td>
@@ -120,6 +77,10 @@
                 <td id="area"></td>
               </tr>
               <tr>
+               <th>Continent</th>
+                <td id="region"></td>
+              </tr> 
+              <tr>
                 <th>Sub Region</th>
                 <td id="subregion"></td>
               </tr>
@@ -127,11 +88,7 @@
                 <th>Alpha 3 Code</th>
                 <td id="alpha3Code"></td>
               </tr>
-              <tr>
-               <!--<th>Continent</th>
-                <td id="region"></td>
-              </tr>  
-            -->
+              
              
             </table>
             
@@ -147,10 +104,6 @@
   </div>
   
 
-<br><br>
-
-
-
 <!-- Currency Modal -->
 
 
@@ -162,15 +115,15 @@
     
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Currency</h4>
+        <div class="modal-header">          
+			<h4 class="modal-title"><img src="" style="height: 50px" id="flag"/> <a id="country"></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>  
         </div>
         <div class="modal-body">
 
           <div id="Currency" class="tabcontent">
        
-            <table>
+            <table class="table table-striped">
               <tr>
                 <th>Currency</th>
                 <td id="currency"></td>
@@ -199,14 +152,10 @@
     </div>
   </div>
   
-
-  <br><br>
-
-
-
+	  
 <!-- Weather Modal -->
 
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#weatherModal"><i class="fas fa-cloud-sun" style='font-size:24px; color:white'></i></button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#weatherModal"><i class="fas fa-cloud-sun" style='font-size:24px; color:white; margin-left:-5px;'></i></button>
 
   <!-- Modal -->
   <div class="modal fade" id="weatherModal" role="dialog">
@@ -214,45 +163,47 @@
     
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Weather</h4>
+        <div class="modal-header">          
+			<h4 class="modal-title"><img src="" style="height: 50px" id="flag"/> <a id="country"></h4>
+          	<button type="button" class="close" data-dismiss="modal">&times;</button>  
         </div>
         <div class="modal-body">
 
           <div id="Weather" class="tabcontent">
            
-            <table>
-              <tr>
-                <th>Temperature (°C)</th>
-                <td id="weatherTemp"></td>
-              </tr>
-              <tr>
-                <th>Feels Like (°C)</th>
-                <td id="weatherFeelsLike"></td>
-              </tr>
-              <tr>
-                <th>Maximum Temperature (°C)</th>
-                <td id="weatherTempMax"></td>
-              </tr>
-              <tr>
-                <th>Minimum Temperature (°C)</th>
-                <td id="weatherTempMin"></td>
-              </tr>    
-              <tr>
-                <th>Condition</th>
-                <td id="weatherMain"></td>
-              </tr>
-              <tr>
-                <th>Wind Speed (m/s)</th>
-                <td id="weatherWindSpeed"></td>
-              </tr>
-              <tr>
-                <th>Humidity (%)</th>
-                <td id="weatherHumidity"></td>
-              </tr>    
-             
+            <table class="table table-borderless" style="text-align: center;">
+            	<!--<tbody>
+                  <tr>
+                    <td  colspan="2"><div id="icon"><img id="weatherIcon" src="" alt="Weather icon"></div></td>
+                    <td  colspan="2" id="weatherTemp"></td>
+                  </tr>
+                  <tr>
+                    <td><div id="weatherTempMax"></div></td>
+                    <td id="weatherTempMin"></td>
+                  </tr>
+                  <tr>
+                    <td id="weatherMain"></td>
+                    <td id="weatherFeelsLike"></td>
+                  </tr>
+              </tbody>-->
+              
+              <thead>
+                <tr style="height:25px">
+                  <td rowspan="2"><div id="icon"><img id="weatherIcon" src="" alt="Weather icon"></div></td>
+                  <td rowspan="2" style="font-size:50px"><div id="weatherTemp"></div><sup>°C</sup></td>
+                  <td><b><div id="weatherTempMax"></div><sup>°C</sup></b></td>
+                </tr>
+                <tr style="height:25px">
+                  <td width="10"><div id="weatherTempMin"></div><sup>°C</sup></td>
+                </tr>
+                <tr style="height:25px">
+                  <td width="10"><div id="weatherMain"></div></td>
+                  <td colspan="2">Feels Like: <div id="weatherFeelsLike"></div></td>
+                </tr>
+              </thead>
+       
             </table>
+
           </div>
 
         </div>
@@ -265,12 +216,9 @@
   </div>
   
 
-  <br><br>
-
-
 <!-- Wikipedia Modal -->
 
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#wikiModal"><i class="fab fa-wikipedia-w" style='font-size:24px; color:white'></i></button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#wikiModal"><i class="fab fa-wikipedia-w"  style='font-size:24px; color:white; margin-left:-5px; margin-top:2px;'></i></button>
 
   <!-- Modal -->
   <div class="modal fade" id="wikiModal" role="dialog">
@@ -278,22 +226,22 @@
     
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Wikipedia</h4>
+        <div class="modal-header">            
+			<h4 class="modal-title"><img src="" style="height: 50px" id="flag"/> <a id="country"></h4>
+         	 <button type="button" class="close" data-dismiss="modal">&times;</button>  
         </div>
         <div class="modal-body">
 
           <div id="Wikipedia" class="tabcontent">
         
-            <table>
+            <table class="table table-striped">
               <tr>
                 <th>Summary</th>
                 <td id="wikiSummary"></td>
               </tr>
               <tr>
                 <th>Wikipedia Link</th>
-                <td id="wikiUrl"></td>
+                <td><a id="wikiUrl" href="" target="_blank"></a></td>
               </tr>
             </table>
           </div>     
@@ -310,15 +258,10 @@
   
 
 
-  <br><br>
-
-
-
-
 <!-- COVID Modal -->
 
 
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#covidModal"><i class="fas fa-virus" style='font-size:24px; color:white'></i></button>
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#covidModal"><i class="fas fa-viruses" style='font-size:24px; color:white; margin-left:-2px;'></i></button>
 
   <!-- Modal -->
   <div class="modal fade" id="covidModal" role="dialog">
@@ -326,15 +269,15 @@
     
       <!-- Modal content-->
       <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">COVID-19</h4>
+        <div class="modal-header">          
+			<h4 class="modal-title"><img src="" style="height: 50px" id="flag"/> <a id="country"></h4>
+          	<button type="button" class="close" data-dismiss="modal">&times;</button>  
         </div>
         <div class="modal-body">
 
           <div id="COVID" class="tabcontent">
           
-             <table>
+             <table class="table table-striped">
                         <tr>
                           <th>Total Cases</th>
                           <td id="covidConfirmed"></td>
@@ -352,7 +295,7 @@
                           <td id="covidNewConfirmed"></td>
                         </tr>
                         <tr>
-                          <th>New Recovered:</th>
+                          <th>New Recovered</th>
                           <td id="covidNewRecovered"></td>
                         </tr>
                         <tr>
