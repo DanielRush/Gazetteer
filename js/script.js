@@ -1,4 +1,3 @@
-
 let map;
 let OpenStreetMap;
 let code;
@@ -47,19 +46,12 @@ $(document).ready(function () {
     img.src=url;
 	}
 
-	// wonders icon
-	const greenMarker = L.ExtraMarkers.icon({
-		icon: 'fas fa-landmark',
-		markerColor: 'green-light',
-		shape: 'circle',
-		prefix: 'fa'
-	});
-
 	markerHash = {};
+
+
 
 	boundary = new L.geoJson().addTo(map);
 
-	
 	// scale bar
 	L.control.scale().addTo(map);
 
@@ -73,8 +65,7 @@ function getLocation() {
 			function (position) {
 				const { latitude, longitude } = position.coords;
 				const coords = [ latitude, longitude ];
-				
-				
+							
 				
 				$.ajax({
 					url: "php/getUserCountry.php?",
@@ -203,6 +194,14 @@ function borderStyle() {
 	};
 }
 
+function populationWithCommas(population) {
+    		return population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+
+function areaWithCommas(area) {
+    		return area.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+
 function getCountryInfo() {
 	$.ajax({
 		url: "php/getInfo.php",
@@ -211,25 +210,20 @@ function getCountryInfo() {
 			country_code: code
 		},
 		success: function (response) {
-			let info = $.parseJSON(response);
-          
-          	/*var pop = info.population;
-          	var popC = pop.toLocaleString();
-        	
-			document.body.innerHTML = pop.toLocaleString();
-          	$("#population").html(info.popC); */
-          
-        
+			let info = $.parseJSON(response);  
+          	
+          	
+			
           
 			$(".card-header").attr("src", info.flag);
 			$("#country").html(info.name);
 			$("#capital").html(info.capital);
-			$("#population").html(info.population);
+			$("#population").html(populationWithCommas(info.population));
 			$("#flag").attr("src", info.flag);
 			$("#currency").html(info.currencies[0]["name"]);
 			$("#currencySymbol").html(info.currencies[0]["symbol"]);
 			$("#currencyCode").html(info.currencies[0]["code"]);
-			$("#area").html(info.area);
+			$("#area").html(areaWithCommas(info.area));
 			$("#timezones").html(info.timezones);
 			$("#region").html(info.region);
 			$("#subregion").html(info.subregion);
@@ -243,6 +237,8 @@ function getCountryInfo() {
 
 			getExchangeRates(info.currencies[0]["code"]);
 			getWeather(info.latlng);
+          
+          
 		},
 	});
 }
@@ -274,6 +270,8 @@ function getWiki() {
 }
 
 
+
+
 // weather 
 function getWeather(latlng) {
 	$.ajax({
@@ -296,10 +294,10 @@ function getWeather(latlng) {
         		/*$('#weatherIcon').html(weatherResult.weather[0].icon);*/
 				$('#weatherIcon').html(weatherResult.weather[0].icon);
               	$('#weatherMain').html(weatherResult.weather[0].main);
-				$('#weatherTemp').html(Math.round(weatherResult.main.temp));
-				$('#weatherFeelsLike').html(Math.round(weatherResult.main.feels_like));
-				$('#weatherTempMin').html(Math.round(weatherResult.main.temp_min));
-				$('#weatherTempMax').html(Math.round(weatherResult.main.temp_max));
+				$('#weatherTemp').html(Math.round(weatherResult.main.temp) + '°' );
+				$('#weatherFeelsLike').html(Math.round(weatherResult.main.feels_like) + '°C');
+				$('#weatherTempMin').html(Math.round(weatherResult.main.temp_min) + '°C');
+				$('#weatherTempMax').html(Math.round(weatherResult.main.temp_max) + '°C');
 				$('#weatherHumidity').html(weatherResult.main.humidity);
 				$('#weatherPressure').html(weatherResult.main.pressure);
 				$('#weatherWindSpeed').html(weatherResult.wind.speed);
@@ -312,7 +310,24 @@ function getWeather(latlng) {
 	});
 }
 
-
+function totalCasesWithCommas(totalCases) {
+    		return totalCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+function totalRecoveredWithCommas(totalRecovered) {
+    		return totalRecovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+function totalDeathsWithCommas(totalDeaths) {
+    		return totalDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+function newCasesWithCommas(newCases) {
+    		return newCases.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+function newRecoveredWithCommas(newRecovered) {
+    		return newRecovered.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+function newDeathsWithCommas(newDeaths) {
+    		return newDeaths.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
 
 // covid data
 function getCovidData() {
@@ -332,12 +347,12 @@ function getCovidData() {
 				let newRecovered = covidResult[1].Recovered - covidResult[0].Recovered;
 				let newDeaths = covidResult[1].Deaths - covidResult[0].Deaths;
 
-				$('#covidConfirmed').html(totalCases);
-				$('#covidRecovered').html(totalRecovered);
-				$('#covidDeaths').html(totalDeaths);
-				$('#covidNewConfirmed').html(newCases);
-				$('#covidNewRecovered').html(newRecovered);
-				$('#covidNewDeaths').html(newDeaths);
+				$('#covidConfirmed').html(totalCasesWithCommas(totalCases));
+				$('#covidRecovered').html(totalRecoveredWithCommas(totalRecovered));
+				$('#covidDeaths').html(totalDeathsWithCommas(totalDeaths));
+				$('#covidNewConfirmed').html(newCasesWithCommas(newCases));
+				$('#covidNewRecovered').html(newRecoveredWithCommas(newRecovered));
+				$('#covidNewDeaths').html(newDeathsWithCommas(newDeaths));
 			}
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
@@ -373,8 +388,11 @@ function getExchangeRates(code) {
 
 // Cities
             var cities = result.cities.geonames;
+
             for (let i in cities) {
+
                 if (cities[i].countrycode == $('#search').val()) {
+
                     markers.addLayer(
                         L.marker([cities[i].lat, cities[i].lng], { icon: cityIcon }).bindPopup(`<b>${cities[i].name}</b> <br> Population: ${cities[i].population.toLocaleString()}`)
                     )
@@ -382,14 +400,15 @@ function getExchangeRates(code) {
             }
 
 map.addLayer(markers);
+/*L.icon.fontAwesome*/
 
 var cityIcon = L.ExtraMarkers.icon({
     iconClasses: "far fa-building",
-    markerColor: '#F78104',
+    markerColor: '#F3D849',
     markerFillOpacity: 0.95,
-    /*markerStrokeWidth: 1,
-    markerStrokeColor: "grey",*/
-    iconColor: "white",
+    markerStrokeWidth: 1,
+    markerStrokeColor: "grey",
+    iconColor: "black",
     iconXOffset: -1,
     iconYOffset: -10
 })
