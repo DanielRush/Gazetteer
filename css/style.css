@@ -50,6 +50,101 @@ html, body {
   animation: animate-preloader 1s linear infinite;
   }
 
+
+
+
+.weatherCard{
+  width: 400px;
+  height: 200px;
+  position: relative;
+  margin: auto;
+}
+
+.currentTemp{
+  width: 200px;
+  height: 200px;
+  background: #F78104;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.currentWeather{
+  width: 200px;
+  height: 200px;
+  background: rgba(72,180,170, 0.6);
+  margin: auto;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.weatherTemp{
+  font-size: 80px;
+  text-align: center;
+  display: block;
+  font-weight: 300;
+  color: #FFFFFF;
+  padding: 20px 0 0;
+}
+
+.feelsLike{
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  display: block;
+}
+
+#weatherMain{
+  color: rgb(255, 255, 255);
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+  display: block;
+}
+
+.conditions{
+  font-family: weathericons;
+  font-size: 80px;
+  display: block;
+  padding: 20px 0 0;
+  text-align: center;
+}
+
+.infoTemp{
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #009688;
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.maxTemp {
+  width: 50%;
+  position: absolute;
+  left: 5px;
+  word-spacing: 60px;
+  top: 5px;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.minTemp {
+  width: 50%;
+  right: -5px;
+  position: absolute;
+  word-spacing: 60px;
+  top: 5px;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+
   @-webkit-keyframes animate-preloader {
     0% {
       -webkit-transform: rotate(0deg);
@@ -171,3 +266,63 @@ html, body {
           height: 200px;
           margin: auto;
         }
+}
+
+    @media screen and (max-width: 413px) {
+      	.weatherCard{
+          width: 225px;
+          height: 200px;
+          position: relative;
+          margin: auto;
+		}
+      
+      	.currentTemp{
+          width: 113px;
+          height: 200px;
+          background: #F78104;
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+
+        .currentWeather{
+          width: 112px;
+          height: 200px;
+          background: rgba(72,180,170, 0.6);
+          margin: auto;
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+      
+      	.infoTemp{
+          width: 112px;
+          height: 50px;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          background: #009688;
+          font-weight: 700;
+          color: rgb(255, 255, 255);
+          text-align: center;
+        }
+      
+        .maxTemp {
+          width: 50%;
+          left: 2px;
+          top: 10px;
+          font-size: 18px;
+        }
+
+        .minTemp {
+          width: 50%;
+          right: -2px;
+          top: 10px;
+          font-size: 18px;
+        }
+
+        .weatherTemp{
+          font-size: 60px;
+        }
+        
+}
