@@ -77,9 +77,10 @@ function getLocation() {
 					success: function (json) {
 						map.setView(coords, 13);
 						json = JSON.parse(json);
-
+						
 						const country = json.countryName;
 						move_map(country);
+                      $("#countries").val(country).change();
 					},
 				});
 			},
@@ -140,7 +141,7 @@ function move_map(country) {
 				const lat = (result['data'][0]['geometry']['lat']);
 				const lng = (result['data'][0]['geometry']['lng']);
 				code = (result['data'][0]['components']['ISO_3166-1_alpha-2']);
-
+				
 				map.panTo(new L.LatLng(lat, lng), 13);
 				$('#country_info').collapse('show');
 
@@ -211,8 +212,7 @@ function getCountryInfo() {
 		},
 		success: function (response) {
 			let info = $.parseJSON(response);  
-          	
-          	
+          	      	
 			
           
 			$(".card-header").attr("src", info.flag);
@@ -258,6 +258,7 @@ function getWiki() {
 				$('#wikiSummary').html(wikiResult.geonames[0].summary);
 				$('#wikiUrl').html(wikiResult.geonames[0].wikipediaUrl);
               	$('#wikiUrl').attr("href", wikipediaUrlFull);
+                
 			}
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
@@ -336,7 +337,7 @@ function getCovidData() {
 		type: 'GET',
 		dataType: 'json',
 		data: {
-			country: $("#countries").val()
+			country: $("#countries").val(),
 		},
 		success: function (covidResult) {
 			if (covidResult.length > 0) {
