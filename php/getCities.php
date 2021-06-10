@@ -16,7 +16,7 @@ $decode = json_decode($result, true);
 
 $output['status']['code'] = "200";
 $output['status']['name'] = "OK";
-$output['status']['description'] = "City information received";
+$output['status']['description'] = "success";
 
 $executionEndTime = microtime(true);
 $executionTime = round(($executionEndTime - $executionStartTime) * 1000, 3);
