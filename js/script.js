@@ -124,7 +124,32 @@ function openCountry(evt, countryName) {
 
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
-  
+ 
+
+function cityPopulationWithCommas(population) {
+    		return population.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			}
+
+//markers
+map.addLayer(markers);
+
+var markers = L.markerClusterGroup();
+markers.addLayer(L.marker(getRandomLatLng(map)));
+
+  var orangeMarker = L.ExtraMarkers.icon({
+    icon: 'fas fa-city', /*far fa-building*/
+    markerColor: '#orange', /*#F3D849*/
+    iconColor: '#fff',
+    shape: 'circle',
+    prefix: 'fa'
+  });
+
+  L.marker([51.941196,4.512291], {icon: orangeMarker}).addTo(map);
+ 	
+    markers = L.markerClusterGroup();
+
+  	map.addLayer(markers); 
+
 
 function move_map(country) {
 	$("#countries option:selected").text(country)
@@ -144,7 +169,17 @@ function move_map(country) {
 				
 				map.panTo(new L.LatLng(lat, lng), 13);
 				$('#country_info').collapse('show');
-
+	
+				$('#cityName').html(result['data'][0]['name']);
+				$('#cityPopulation').html(cityPopulationWithCommas(result['data'][0]['population']));	
+				
+                
+               var cities = result.data.name;
+              
+                markers.addLayer(
+                        L.marker([cities.lat, cities.lng], { icon: cityIcon }).bindPopup(`<b>${cities[i].name}</b> <br> Population: ${cities[i].population.toLocaleString()}`)
+                    )
+  
 				getCountryBorder();
 				getCountryInfo();
 				getWiki();
@@ -212,8 +247,7 @@ function getCountryInfo() {
 		},
 		success: function (response) {
 			let info = $.parseJSON(response);  
-          	      	
-			
+          	      				
           
 			$(".card-header").attr("src", info.flag);
 			$("#country").html(info.name);
@@ -387,29 +421,29 @@ function getExchangeRates(code) {
 }
 
 
-// Cities
-            var cities = result.cities.geonames;
+// find Nearby Place Name
 
-            for (let i in cities) {
-
-                if (cities[i].countrycode == $('#search').val()) {
-
-                    markers.addLayer(
-                        L.marker([cities[i].lat, cities[i].lng], { icon: cityIcon }).bindPopup(`<b>${cities[i].name}</b> <br> Population: ${cities[i].population.toLocaleString()}`)
-                    )
-                }
-            }
-
-map.addLayer(markers);
-/*L.icon.fontAwesome*/
-
-var cityIcon = L.ExtraMarkers.icon({
-    iconClasses: "far fa-building",
-    markerColor: '#F3D849',
-    markerFillOpacity: 0.95,
-    markerStrokeWidth: 1,
-    markerStrokeColor: "grey",
-    iconColor: "black",
-    iconXOffset: -1,
-    iconYOffset: -10
-})
+function getNearbyPlaceName() {
+	$.ajax({
+		url: "php/getNearbyPlaceName.php",
+		type: "GET",
+	data: {
+				lat: lng,
+      			lng: lng,
+			},
+			success: function(result) {
+			console.log(result);
+	
+			if (result.status.name == "ok") {
+	
+				$('#cityName').html(result['data']['geonames'][0]['name']);
+				$('#cityPopulation').html(cityPopulationWithCommas(result['data']['geonames'][0]['population']));	
+				}
+			},
+	
+			error: function(jqXHR, textStatus, errorThrown) {
+				console.log('ERROR');
+				console.error(errorThrown);
+			}
+		}); 
+}
