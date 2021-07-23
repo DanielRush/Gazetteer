@@ -1,3 +1,4 @@
+
 let map;
 let OpenStreetMap;
 let code;
@@ -48,40 +49,6 @@ $(document).ready(function () {
 
 	markerHash = {};
 
-  	/*const greenMarker = L.ExtraMarkers.icon({
-		icon: 'fas fa-landmark',
-		markerColor: 'green-light',
-		shape: 'circle',
-		prefix: 'fa'
-	});*/
-  
-  const orangeMarker = L.ExtraMarkers.icon({
-		icon: 'fas fa-city',
-    	markerColor: 'orange',     
-    	iconColor: '#fff',		
-		shape: 'circle',
-		prefix: 'fa'
-	});
-  
-  
-  
-  
-  	markerHash['christ_the_redeemer'] = L.marker([-22.9519, -43.2105], { icon: orangeMarker })
-	markerHash.christ_the_redeemer
-	.addTo(map)
-	.bindPopup("<img src='../images/WondersTab/ChristTheRedeemer_500x500.png' alt='Christ the Redeemer' width='100%'><br><b>Christ the Redeemer</b><br>Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil, created by French sculptor Paul Landowski and built by Brazilian engineer Heitor da Silva Costa, in collaboration with French engineer Albert Caquot. Romanian sculptor Gheorghe Leonida fashioned the face. Constructed between 1922 and 1931, the statue is 30 metres (98 ft) high, excluding its 8-metre (26 ft) pedestal. The arms stretch 28 metres (92 ft) wide.<br><a href='https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)' target='_blank'>https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)</a>");
-	
-  
-  markerHash['christ_the_redeemer'] = L.marker([-22.9419, -43.2105], { icon: orangeMarker })
-	markerHash.christ_the_redeemer
-	.addTo(map)
-	.bindPopup("<img src='../images/WondersTab/ChristTheRedeemer_500x500.png' alt='Christ the Redeemer' width='100%'><br><b>Christ the Redeemer</b><br>Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil, created by French sculptor Paul Landowski and built by Brazilian engineer Heitor da Silva Costa, in collaboration with French engineer Albert Caquot. Romanian sculptor Gheorghe Leonida fashioned the face. Constructed between 1922 and 1931, the statue is 30 metres (98 ft) high, excluding its 8-metre (26 ft) pedestal. The arms stretch 28 metres (92 ft) wide.<br><a href='https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)' target='_blank'>https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)</a>");
-	
-  markerHash['christ_the_redeemer'] = L.marker([-22.9619, -43.2105], { icon: orangeMarker })
-	markerHash.christ_the_redeemer
-	.addTo(map)
-	.bindPopup("<img src='../images/WondersTab/ChristTheRedeemer_500x500.png' alt='Christ the Redeemer' width='100%'><br><b>Christ the Redeemer</b><br>Christ the Redeemer is an Art Deco statue of Jesus Christ in Rio de Janeiro, Brazil, created by French sculptor Paul Landowski and built by Brazilian engineer Heitor da Silva Costa, in collaboration with French engineer Albert Caquot. Romanian sculptor Gheorghe Leonida fashioned the face. Constructed between 1922 and 1931, the statue is 30 metres (98 ft) high, excluding its 8-metre (26 ft) pedestal. The arms stretch 28 metres (92 ft) wide.<br><a href='https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)' target='_blank'>https://en.wikipedia.org/wiki/Christ_the_Redeemer_(statue)</a>");
-	
 
 
 	boundary = new L.geoJson().addTo(map);
@@ -111,10 +78,9 @@ function getLocation() {
 					success: function (json) {
 						map.setView(coords, 13);
 						json = JSON.parse(json);
-						
+
 						const country = json.countryName;
 						move_map(country);
-                      $("#countries").val(country).change();
 					},
 				});
 			},
@@ -175,7 +141,7 @@ function move_map(country) {
 				const lat = (result['data'][0]['geometry']['lat']);
 				const lng = (result['data'][0]['geometry']['lng']);
 				code = (result['data'][0]['components']['ISO_3166-1_alpha-2']);
-				
+
 				map.panTo(new L.LatLng(lat, lng), 13);
 				$('#country_info').collapse('show');
 
@@ -246,7 +212,8 @@ function getCountryInfo() {
 		},
 		success: function (response) {
 			let info = $.parseJSON(response);  
-          	      	
+          	
+          	
 			
           
 			$(".card-header").attr("src", info.flag);
@@ -292,7 +259,6 @@ function getWiki() {
 				$('#wikiSummary').html(wikiResult.geonames[0].summary);
 				$('#wikiUrl').html(wikiResult.geonames[0].wikipediaUrl);
               	$('#wikiUrl').attr("href", wikipediaUrlFull);
-                
 			}
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
@@ -303,6 +269,9 @@ function getWiki() {
 		}
 	});
 }
+
+
+
 
 // weather 
 function getWeather(latlng) {
@@ -322,7 +291,8 @@ function getWeather(latlng) {
              
               /*http://openweathermap.org/img/wn/10d@2x.png
               var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";*/
-                      	
+              
+        		/*$('#weatherIcon').html(weatherResult.weather[0].icon);*/
 				$('#weatherIcon').html(weatherResult.weather[0].icon);
               	$('#weatherMain').html(weatherResult.weather[0].main);
 				$('#weatherTemp').html(Math.round(weatherResult.main.temp) + '°' );
@@ -367,7 +337,7 @@ function getCovidData() {
 		type: 'GET',
 		dataType: 'json',
 		data: {
-			country: $("#countries").val(),
+			country: $("#countries").val()
 		},
 		success: function (covidResult) {
 			if (covidResult.length > 0) {
@@ -417,20 +387,22 @@ function getExchangeRates(code) {
 }
 
 
-// Cities
-function getCities() {
+// cities input
+/*function getNearbyPlaceName() {
 	$.ajax({
-		url: 'php/getCities.php',
+		url: 'php/getNearbyPlaceName.php',
 		type: 'GET',
 		dataType: 'json',
 		data: {
-			iso2: $("#cities").val(),
+			lat: lat,
+			lng: lng,
 		},
-		success: function (citiesResult) {
-			if (citiesResult.geonames.length > 0) {
-				$('#cities').html(citiesResult.geonames[0].cities);
-				$('#citiesPopulation').html(citiesResult.geonames[0].population);
-  
+		success: function (result) {
+			if (result.geonames.length > 0) {
+
+				$('#cityName').html(result.geonames[0].name);
+				$('#cityPopulation').html(result.geonames[0].population);
+
 			}
 		},
 		error: function (jqXHR, textStatus, errorThrown) {
@@ -440,4 +412,44 @@ function getCities() {
 			console.error(JSON.stringify(errorThrown));
 		}
 	});
+} */
+
+// city Location
+function getCitiesLocation() {
+	$.ajax({
+		url: "php/getCitiesLocation.php",
+		type: 'GET',
+		dataType: 'json',
+		data: {
+			country: $("#countries").val(),
+		},
+		success: function (results) {
+			if (results.status.name == "ok") {
+				$('#cityName').html(results.results[0].id);
+				$('#cityLat').html(results.results.coordinates[0].latitude);
+				$('#cityLng').html(results.results.coordinates[0].longitude);
+				$('#cityImage').html(results.results.images.url);
+			}
+		},
+		error: function (jqXHR, textStatus, errorThrown) {
+			console.log(textStatus, errorThrown);
+		}
+	});
 }
+
+var cityIcon = L.ExtraMarkers.icon({
+    iconClasses: "far fa-building",
+    markerColor: '#F3D849',
+    markerFillOpacity: 0.95,
+    markerStrokeWidth: 1,
+    markerStrokeColor: "grey",
+    iconColor: "black",
+    iconXOffset: -1,
+    iconYOffset: -10
+})
+
+var markers = L.markerClusterGroup();
+markers.addLayer(L.marker(cityLat, cityLng(map)));
+
+map.addLayer(markers);
+/*L.icon.fontAwesome*/
